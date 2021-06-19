@@ -1,0 +1,199 @@
+<div class="container-fluid">
+  <div class="row mb-3 px-2">
+    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 my-auto text-center">
+      <h3 class="mt-5">Testing KNN</h3>
+    </div>
+  </div>
+  <div>
+    <div class="container cs-container-1 mt-3 pb-5">
+      <hr>
+      <!-- body  -->
+      <form name="editForm" role="form" [formGroup]="editForm" (submit)="insertRaw()">
+        <div class="row px-3">
+          <div class="col-12">
+            <h3>Names and documents</h3>
+          </div>
+          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+            <label class="control-label" for="id">ID</label>
+            <div class="form-group">
+              <div class="d-flex">
+                <input id="id" type="text" class="form-control" name="ID" formControlName="id" placeholder="ID"/>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+            <label class="control-label">Titular</label>
+            <div class="form-group">
+              <input type="text" class="form-control" id="titular" name="titular" placeholder="titular"
+                     formControlName="titular">
+            </div>
+          </div>
+
+          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+            <label class="control-label">Ruc</label>
+            <div class="form-group">
+              <input type="text" class="form-control" id="ruc" name="ruc" placeholder="ruc"
+                     formControlName="ruc">
+            </div>
+          </div>
+
+          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+            <label class="control-label">Titulo Proyecto</label>
+            <div class="form-group">
+              <input type="text" class="form-control" id="titulo_proyecto" name="titulo_proyecto" placeholder="Titulo Proyecto"
+                     formControlName="titulo_proyecto">
+            </div>
+          </div>
+
+          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+            <div class="form-group">
+              <label class="control-label">Unidad Proyecto</label>
+              <input type="text" class="form-control" id="unidad_proyecto" name="unidad_proyecto" placeholder="Unidad Proyecto"
+                     formControlName="unidad_proyecto">
+            </div>
+          </div>
+          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+            <div class="form-group">
+              <label class="control-label">Tipo</label>
+              <input type="text" class="form-control" id="tipo" name="tipo" placeholder="Tipo"
+                     formControlName="tipo">
+            </div>
+          </div>
+          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+            <div class="form-group">
+              <label class="control-label">Actividad</label>
+              <input type="text" class="form-control" id="actividad" name="actividad" placeholder="Actividad"
+                     formControlName="actividad">
+            </div>
+          </div>
+          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+            <div class="form-group">
+              <label class="control-label">fecha_inicio</label>
+              <input type="text" class="form-control" id="fecha_inicio" name="fecha_inicio" placeholder="fecha_inicio"
+                     formControlName="fecha_inicio">
+            </div>
+          </div>
+          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+            <div class="form-group">
+              <label class="control-label">descripcion</label>
+              <input type="text" class="form-control" id="descripcion" name="descripcion" placeholder="descripcion"
+                     formControlName="descripcion">
+            </div>
+          </div>
+          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+            <div class="form-group">
+              <label class="control-label">longitud</label>
+              <input type="text" class="form-control" id="longitud" name="longitud" placeholder="longitud"
+                     formControlName="longitud">
+            </div>
+          </div>
+          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+            <div class="form-group">
+              <label class="control-label">latitud</label>
+              <input type="text" class="form-control" id="latitud" name="latitud" placeholder="latitud"
+                     formControlName="latitud">
+            </div>
+          </div>
+          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+            <div class="form-group">
+              <label class="control-label">resolucion</label>
+              <input type="text" class="form-control" id="resolucion" name="resolucion" placeholder="resolucion"
+                     formControlName="resolucion">
+            </div>
+          </div>
+          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+            <div class="form-group">
+              <label class="control-label">label</label>
+              <input type="text" class="form-control" id="label" name="label" placeholder="label"
+                     formControlName="label">
+            </div>
+          </div>
+
+          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 text-center">
+            <button class="btn btn-info mt-4" type="submit" [disabled]="editForm.invalid">
+              Insertar Fila a Predecir
+            </button>
+          </div>
+        </div>
+        <hr/>
+        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 text-center">
+          <button class="btn btn-info mt-4" (click)="getPredictions()">
+            Get Predictions
+          </button>
+        </div>
+        <hr>
+      </form>
+    </div>
+  </div>
+  <div class="table table-striped p-5" >
+    <table class="table table-bordered table-hover text-center">
+      <thead>
+      <tr>
+        <th scope="col" >
+          <span>ID</span>
+        </th>
+        <th scope="col" >
+          <span>Titular</span>
+        </th>
+        <th scope="col" >
+          <span>Ruc</span>
+        </th>
+        <th scope="col" >
+          <span>Titulo del Proyecto</span>
+        </th>
+        <th scope="col" >
+          <span>Unidad de Proyecto</span>
+        </th>
+        <th scope="col" >
+          <span>Tipo</span>
+        </th>
+        <th scope="col" >
+          <span>Actividad</span>
+        </th>
+        <th scope="col" >
+          <span>Fecha de Inicio</span>
+        </th>
+        <th scope="col" >
+          <span>Descripción</span>
+        </th>
+        <th scope="col" >
+          <span>Longitud</span>
+        </th>
+        <th scope="col" >
+          <span>Latitud</span>
+        </th>
+        <th scope="col" >
+          <span>Resolución</span>
+        </th>
+        <th scope="col" >
+          <span>Label</span>
+        </th>
+        <th scope="col" >
+          <span>Estado</span>
+        </th>
+      </tr>
+      </thead>
+      <tbody>
+      <ng-container *ngFor="let rowData of rowsDataPredict; let i = index" class="p-2">
+        <tr class="collapsed" style="cursor:pointer">
+          <td>{{rowData.id}}</td>
+          <td>{{rowData.titular}}</td>
+          <td>{{rowData.ruc}}</td>
+          <td>{{rowData.titulo_proyecto}}</td>
+          <td>{{rowData.unidad_proyecto}}</td>
+          <td>{{rowData.tipo}}</td>
+          <td>{{rowData.actividad}}</td>
+          <td>{{rowData.fecha_inicio}}</td>
+          <td>{{rowData.descripcion}}</td>
+          <td>{{rowData.longitud}}</td>
+          <td>{{rowData.latitud}}</td>
+          <td>{{rowData.resolucion}}</td>
+          <td>{{rowData.label}}</td>
+          <td><span *ngIf="rowData.estado!=null">{{rowData.estado}}</span></td>
+        </tr>
+      </ng-container>
+      </tbody>
+    </table>
+  </div>
+</div>

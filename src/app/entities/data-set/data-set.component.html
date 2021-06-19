@@ -1,0 +1,80 @@
+<div class="container-fluid">
+  <div class="row mb-3 px-2">
+    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 my-auto text-center">
+      <h3 class="mt-5">Data de muestra</h3>
+      <button type="button" class="btn btn-sm btn-primary" (click)="goToPredict()">
+        Probar KNN
+      </button>
+    </div>
+  </div>
+  <div class="table table-striped p-5" >
+    <table class="table table-bordered table-hover text-center">
+      <thead>
+      <tr>
+        <th scope="col" >
+          <span>ID</span>
+        </th>
+        <th scope="col" >
+          <span>Titular</span>
+        </th>
+        <th scope="col" >
+          <span>Ruc</span>
+        </th>
+        <th scope="col" >
+          <span>Titulo del Proyecto</span>
+        </th>
+        <th scope="col" >
+          <span>Unidad de Proyecto</span>
+        </th>
+        <th scope="col" >
+          <span>Tipo</span>
+        </th>
+        <th scope="col" >
+          <span>Actividad</span>
+        </th>
+        <th scope="col" >
+          <span>Fecha de Inicio</span>
+        </th>
+        <th scope="col" >
+          <span>Descripción</span>
+        </th>
+        <th scope="col" >
+          <span>Longitud</span>
+        </th>
+        <th scope="col" >
+          <span>Latitud</span>
+        </th>
+        <th scope="col" >
+          <span>Resolución</span>
+        </th>
+        <th scope="col" >
+          <span>Label</span>
+        </th>
+        <th scope="col" >
+          <span>Estado</span>
+        </th>
+      </tr>
+      </thead>
+      <tbody>
+      <ng-container *ngFor="let rowData of rowsData; let i = index" class="p-2">
+        <tr class="collapsed" style="cursor:pointer">
+          <td>{{rowData.id}}</td>
+          <td>{{rowData.titular}}</td>
+          <td>{{rowData.ruc}}</td>
+          <td>{{rowData.titulo_proyecto}}</td>
+          <td>{{rowData.unidad_proyecto}}</td>
+          <td>{{rowData.tipo}}</td>
+          <td>{{rowData.actividad}}</td>
+          <td>{{rowData.fecha_inicio}}</td>
+          <td>{{rowData.descripcion}}</td>
+          <td>{{rowData.longitud}}</td>
+          <td>{{rowData.latitud}}</td>
+          <td>{{rowData.resolucion}}</td>
+          <td>{{rowData.label}}</td>
+          <td>{{rowData.estado}}</td>
+        </tr>
+      </ng-container>
+      </tbody>
+    </table>
+  </div>
+</div>
